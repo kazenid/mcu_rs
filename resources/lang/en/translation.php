@@ -213,5 +213,6 @@ return [
     "checkup-date" => "Checkup Date",
     "download" => "Download",
     "upload" => "Upload",
-    "pacs-result" => "PACS Result",
+    "pacs-result" => "PACS Result",    
+    "close" => "Close",
 ];

@@ -214,5 +214,7 @@ return [
     "download" => "Unduh",
     "upload" => "Unggah",
     "pacs-result" => "Hasil PACS",
+    "close" => "Tutup",
+
 
 ];
