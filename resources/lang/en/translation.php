@@ -215,4 +215,11 @@ return [
     "upload" => "Upload",
     "pacs-result" => "PACS Result",    
     "close" => "Close",
+    "name" => "Name",
+    "rm-number" => "MR Number",
+    "address" => "Address",
+    "kso" => "Penjamin",
+    "act" => "Action",
+    "visit-date" => "Tanggal Kunjungan",
+    "unit-name" => "Nama Unit"
 ];

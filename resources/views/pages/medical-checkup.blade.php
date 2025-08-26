@@ -31,13 +31,13 @@
                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>No. RM</th>
-                            <th>Nama Pasien</th>
-                            <th>Alamat</th>
+                            <th>#</th>
+                            <th>@lang('translation.rm-number')</th>
+                            <th>@lang('translation.name')</th>
+                            <th>@lang('translation.address')</th>
                             <!-- <th>Tgl Kunjungan</th> -->
-                            <th>Penjamin</th>
-                            <th>Aksi</th>
+                            <th>@lang('translation.kso')</th>
+                            <th>@lang('translation.act')</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -83,7 +83,7 @@
         <div class="modal-content">
             <div class="modal-header bg-white text-white">
                 <h5 class="modal-title" id="modalKunjunganLabel">
-                    Hasil Laboratorium
+                    @lang('translation.lab-result')
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
@@ -95,7 +95,7 @@
                         <div class="col-12 col-md-6">
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-user me-2"></i> Nama
+                                    <i class="bx bx-user me-2"></i> @lang('translation.name')
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -105,7 +105,7 @@
 
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-id-card me-2"></i> No. RM
+                                    <i class="bx bx-id-card me-2"></i> @lang('translation.rm-number')
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -118,7 +118,7 @@
                         <div class="col-12 col-md-6">
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-map me-2"></i> Alamat
+                                    <i class="bx bx-map me-2"></i> @lang('translation.address')
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -134,17 +134,17 @@
                 <div>
                     <h6 class="mb-3 border-bottom pb-2">
                         <i class="bx bx-clipboard me-2 text-primary"></i>
-                        Hasil Pemeriksaan:
+                        @lang('translation.checkup-result'):
                     </h6>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-striped align-middle">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" class="text-center" style="width: 5%;">No</th>
-                                    <th scope="col" style="width: 20%;">Tanggal Kunjungan</th>
-                                    <th scope="col" style="width: 50%;">Nama Unit</th>
-                                    <th scope="col" class="text-center" style="width: 25%;">Hasil Pemeriksaan</th>
+                                    <th scope="col" class="text-center" style="width: 5%;">#</th>
+                                    <th scope="col" style="width: 20%;">@lang('translation.visit-date')</th>
+                                    <th scope="col" style="width: 50%;">@lang('translation.unit-name')</th>
+                                    <th scope="col" class="text-center" style="width: 25%;">@lang('translation.checkup-result')</th>
                                 </tr>
 
                             </thead>

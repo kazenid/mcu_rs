@@ -31,13 +31,13 @@
                 <table id="example" class="table table-bordered dt-responsive nowrap table-striped align-middle" style="width:100%">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>No. RM</th>
-                            <th>Nama Pasien</th>
-                            <th>Alamat</th>
+                            <th>#</th>
+                            <th><?php echo app('translator')->get('translation.rm-number'); ?></th>
+                            <th><?php echo app('translator')->get('translation.name'); ?></th>
+                            <th><?php echo app('translator')->get('translation.address'); ?></th>
                             <!-- <th>Tgl Kunjungan</th> -->
-                            <th>Penjamin</th>
-                            <th>Aksi</th>
+                            <th><?php echo app('translator')->get('translation.kso'); ?></th>
+                            <th><?php echo app('translator')->get('translation.act'); ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,6 @@
                                     data-norm="<?php echo e($item['no_rm']); ?>"
                                     data-alamat="<?php echo e($item['alamat']); ?>"
                                     data-token="<?php echo e($item['token']); ?>"
-                                    data-tglkunjungan="<?php echo e($item['tgl_kunjungan']); ?>"
 
                                     onclick="tampilmodalKunjunganFromThis(this)">
                                     <?php echo app('translator')->get('translation.lab-results'); ?>
@@ -84,7 +83,7 @@
         <div class="modal-content">
             <div class="modal-header bg-white text-white">
                 <h5 class="modal-title" id="modalKunjunganLabel">
-                    Hasil Laboratorium
+                    <?php echo app('translator')->get('translation.lab-result'); ?>
                 </h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Tutup"></button>
             </div>
@@ -96,7 +95,7 @@
                         <div class="col-12 col-md-6">
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-user me-2"></i> Nama
+                                    <i class="bx bx-user me-2"></i> <?php echo app('translator')->get('translation.name'); ?>
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -106,7 +105,7 @@
 
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-id-card me-2"></i> No. RM
+                                    <i class="bx bx-id-card me-2"></i> <?php echo app('translator')->get('translation.rm-number'); ?>
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -119,7 +118,7 @@
                         <div class="col-12 col-md-6">
                             <div class="d-flex flex-wrap mb-2">
                                 <div class="col-4 col-sm-3 fw-bold text-primary d-flex align-items-center">
-                                    <i class="bx bx-map me-2"></i> Alamat
+                                    <i class="bx bx-map me-2"></i> <?php echo app('translator')->get('translation.address'); ?>
                                 </div>
                                 <div class="col-auto me-2">: </div>
                                 <div class="col">
@@ -135,17 +134,17 @@
                 <div>
                     <h6 class="mb-3 border-bottom pb-2">
                         <i class="bx bx-clipboard me-2 text-primary"></i>
-                        Hasil Pemeriksaan:
+                        <?php echo app('translator')->get('translation.checkup-result'); ?>:
                     </h6>
 
                     <div class="table-responsive">
                         <table class="table table-hover table-striped align-middle">
                             <thead class="table-light">
                                 <tr>
-                                    <th scope="col" class="text-center" style="width: 5%;">No</th>
-                                    <th scope="col" style="width: 20%;">Tanggal Kunjungan</th>
-                                    <th scope="col" style="width: 50%;">Nama Unit</th>
-                                    <th scope="col" class="text-center" style="width: 25%;">Hasil Pemeriksaan</th>
+                                    <th scope="col" class="text-center" style="width: 5%;">#</th>
+                                    <th scope="col" style="width: 20%;"><?php echo app('translator')->get('translation.visit-date'); ?></th>
+                                    <th scope="col" style="width: 50%;"><?php echo app('translator')->get('translation.unit-name'); ?></th>
+                                    <th scope="col" class="text-center" style="width: 25%;"><?php echo app('translator')->get('translation.checkup-result'); ?></th>
                                 </tr>
 
                             </thead>

@@ -214,7 +214,14 @@ return [
     "download" => "Unduh",
     "upload" => "Unggah",
     "pacs-result" => "Hasil PACS",
+    "checkup-result" => "Hasil Pemeriksaan",
     "close" => "Tutup",
+    "name" => "Nama",
+    "rm-number" => "No. RM",
+    "address" => "Alamat",
+    "kso" => "Penjamin",
+    "act" => "Aksi",
+    
 
 
 ];
