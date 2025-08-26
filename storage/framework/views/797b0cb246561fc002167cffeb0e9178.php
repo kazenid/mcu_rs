@@ -12,3 +12,4 @@
         </div>
     </div>
 </footer>
+<?php /**PATH F:\mcu\resources\views/layouts/footer.blade.php ENDPATH**/ ?>

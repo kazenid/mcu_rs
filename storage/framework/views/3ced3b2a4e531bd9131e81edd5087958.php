@@ -5,19 +5,19 @@
         <!-- Dark Logo-->
         <a href="index" class="logo logo-dark">
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
+                <img src="<?php echo e(URL::asset('build/images/logo-sm.png')); ?>" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="17">
+                <img src="<?php echo e(URL::asset('build/images/logo-dark.png')); ?>" alt="" height="17">
             </span>
         </a>
         <!-- Light Logo-->
         <a href="index" class="logo logo-light">
             <span class="logo-sm">
-                <img src="{{ URL::asset('build/images/logo-sm.png') }}" alt="" height="22">
+                <img src="<?php echo e(URL::asset('build/images/logo-sm.png')); ?>" alt="" height="22">
             </span>
             <span class="logo-lg">
-                <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="17">
+                <img src="<?php echo e(URL::asset('build/images/logo-light.png')); ?>" alt="" height="17">
             </span>
         </a>
         <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -31,24 +31,24 @@
             <div id="two-column-menu">
             </div>
             <ul class="navbar-nav" id="navbar-nav">
-                <li class="menu-title"><span>@lang('translation.menu')</span></li>
+                <li class="menu-title"><span><?php echo app('translator')->get('translation.menu'); ?></span></li>
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="/">
-                        <i class="bx bxs-dashboard"></i> <span>@lang('translation.dashboards')</span>
+                        <i class="bx bxs-dashboard"></i> <span><?php echo app('translator')->get('translation.dashboards'); ?></span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
-                        <i class=" ri-history-line"></i> <span>@lang('translation.visit-history')</span>
+                        <i class=" ri-history-line"></i> <span><?php echo app('translator')->get('translation.visit-history'); ?></span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarLanding">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="medicalcheckup" class="nav-link"> @lang('translation.medical-checkup') </a>
+                                <a href="medicalcheckup" class="nav-link"> <?php echo app('translator')->get('translation.medical-checkup'); ?> </a>
                             </li>
                             <li class="nav-item">
-                                <a href="medicalreport" class="nav-link"> @lang('translation.medical-report')</a>
+                                <a href="medicalreport" class="nav-link"> <?php echo app('translator')->get('translation.medical-report'); ?></a>
                             </li>
                         </ul>
                     </div>
@@ -56,18 +56,18 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
-                        <i class=" ri-account-circle-fill"></i> <span>@lang('translation.profile')</span>
+                        <i class=" ri-account-circle-fill"></i> <span><?php echo app('translator')->get('translation.profile'); ?></span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarMaps">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a href="profile" class="nav-link">
-                                    @lang('translation.profile')
+                                    <?php echo app('translator')->get('translation.profile'); ?>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="profile-edit" class="nav-link">
-                                    @lang('translation.profile-edit')
+                                    <?php echo app('translator')->get('translation.profile-edit'); ?>
                                 </a>
                             </li>
                         </ul>
@@ -81,4 +81,4 @@
 </div>
 <!-- Left Sidebar End -->
 <!-- Vertical Overlay-->
-<div class="vertical-overlay"></div>
+<div class="vertical-overlay"></div><?php /**PATH F:\mcu\resources\views/layouts/sidebar.blade.php ENDPATH**/ ?>

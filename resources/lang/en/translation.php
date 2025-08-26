@@ -231,6 +231,16 @@ return [
     "links" => "Links",
     "range-area" => "Range Area",
     "funnel" => "Funnel",
+    "visit-history" => "Visit History",
+    "medical-checkup" => "Medical Checkup",
+    "medical-report" => "Medical Report",
+    "profile-edit" => "Profile Edit",
+    "patient-list" => "Patient List",
+    "patient-table" => "Patient Table",
+    "download" => "Download",
+    "upload" => "Upload",
+    "pacs-result" => "PACS Result",
+
 ];
 ?>
 
