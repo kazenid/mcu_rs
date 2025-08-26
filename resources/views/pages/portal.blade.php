@@ -53,32 +53,68 @@
                                     <p>Masukkan <span class="fw-semibold">No RM / Rekam Medik</span> untuk melihat hasil pemeriksaan</p>
                                 </div>
 
-                                <form id="two-step-verification-form" method="post" action="{{ route('portal.submit',$no_rm) }}">
+
+                                {{-- Tampilkan error jika ada --}}
+                                @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <ul class="mb-0 list-unstyled" >
+                                        @foreach ($errors->all() as $error)
+                                        <li><span class="fw-semibold">Terjadi Kesalahan : </span>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
+
+                                {{-- Jika ada pesan sukses --}}
+                                @if(session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                @endif
+
+
+                                <form id="two-step-verification-form" method="post" action="{{ route('portal.submit',$token) }}">
                                     @csrf
+                                    <input type="hidden" name="token" id="form-token" value="{{ $token }}">
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="no_rm" class="visually-hidden">No RM</label>
-                                                <input type="text" name="no_rm" class="form-control form-control-lg bg-light border-light text-center" id="no_rm" placeholder="No RM" required>
+                                                <input type="number"
+                                                    name="no_rm"
+                                                    class="form-control form-control-lg bg-light border-light text-center @error('no_rm') is-invalid @enderror"
+                                                    id="no_rm" placeholder="No RM" required value="{{ old('no_rm') }}">
+                                                @error('no_rm')
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
                                             </div>
-                                        </div><!-- end col -->
-                                    </div><!-- end row -->
+
+                                        </div>
+                                    </div>
 
                                     <div class="mt-3">
                                         <button type="submit" class="btn btn-success w-100">Confirm</button>
                                     </div>
                                 </form>
+
                             </div>
                             @else
                             <div class="p-2 mt-4">
-                                <div class="text-muted text-center mb-4 mx-lg-3">
-                                    <h4 class="">Waduh, terjadi kesalahan</h4>
-                                    <p>Silahkan kembali ke menu berikutnya</p>
+                                <div class="text-center mb-4 mx-lg-3">
+                                    <h4 class="text-danger">Terjadi Kesalahan</h4>
+                                    <p class="text-muted">Data yang Anda minta tidak dapat diproses. Silakan kembali ke menu sebelumnya untuk melanjutkan.</p>
+
+                                    <a href="{{ url()->previous() }}" class="btn btn-outline-primary mt-3">
+                                        <i class="ri-arrow-go-back-line me-1"></i> Kembali
+                                    </a>
                                 </div>
                             </div>
                             @endif
-
-
                         </div>
                         <!-- end card body -->
                     </div>

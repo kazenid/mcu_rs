@@ -23,22 +23,43 @@ class PortalController extends Controller
         // return json_encode($has_no_rm.' - '.$no_rm);
         return view('pages.portal', [
             'has_no_rm' => $has_no_rm,
+            'token' => $token,
             'no_rm' => $no_rm
         ]);
         // return json_encode($no_rm);
     }
-    public function submit(Request $request, $token)
+    public function submit(Request $request)
     {
+        $request->validate([
+            'token' => 'required|string',
+            'no_rm' => 'required|string|max:255',
+        ]);
 
-        // Dekripsi token menjadi no_rm dengan AES-256-CBC
-        $key = env('AES256_KEY'); // Kunci AES-256 dari .env
-        $iv = env('AES256_IV');   // IV dari .env
-        $no_rm = openssl_decrypt($token, 'AES-256-CBC', $key, 0, $iv);
+        $key = env('AES256_KEY');
+        $iv  = env('AES256_IV');
 
-        // Lakukan validasi atau proses lainnya dengan $no_rm di sini
-        // Misalnya, simpan ke database atau kirim ke API
+        // Dekripsi token
+        $decrypted = openssl_decrypt($request->token, 'AES-256-CBC', $key, 0, $iv);
+        $data = json_decode($decrypted, true);
 
-        // Setelah proses selesai, Anda bisa mengembalikan respon atau redirect
-        return redirect()->back()->with('success', 'No RM berhasil dikirim: ' . $no_rm);
+        if (!$data || !isset($data['no_rm'], $data['pelayanan_id'])) {
+            return redirect()->back()->withErrors(['token' => 'No RM tidak valid.']);
+        }
+
+        $no_rm_token = $data['no_rm'];
+        $pelayanan_id = $data['pelayanan_id'];
+        $no_rm_input = $request->no_rm;
+
+        // Validasi no_rm
+        if ($no_rm_input === $no_rm_token) {
+            // ✅ Sama → redirect ke aplikasi LIS
+            $lisUrl = "https://lis-rs.example.com/hasil-lab?no_rm={$no_rm_token}&pelayanan_id={$pelayanan_id}";
+            return redirect()->away($lisUrl);
+        } else {
+            // ❌ Tidak sama → kembali dengan error
+            return redirect()->back()
+                ->withErrors(['no_rm' => 'Nomor rekam medis tidak sesuai dengan token.'])
+                ->withInput();
+        }
     }
 }

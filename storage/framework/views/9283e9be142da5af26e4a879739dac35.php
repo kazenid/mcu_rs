@@ -52,32 +52,83 @@
                                     <p>Masukkan <span class="fw-semibold">No RM / Rekam Medik</span> untuk melihat hasil pemeriksaan</p>
                                 </div>
 
-                                <form id="two-step-verification-form" method="post" action="<?php echo e(route('portal.submit',$no_rm)); ?>">
+
+                                
+                                <?php if($errors->any()): ?>
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <ul class="mb-0 list-unstyled" >
+                                        <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <li><span class="fw-semibold">Terjadi Kesalahan : </span><?php echo e($error); ?></li>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <?php endif; ?>
+
+                                
+                                <?php if(session('success')): ?>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <?php echo e(session('success')); ?>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                <?php endif; ?>
+
+
+                                <form id="two-step-verification-form" method="post" action="<?php echo e(route('portal.submit',$token)); ?>">
                                     <?php echo csrf_field(); ?>
+                                    <input type="hidden" name="token" id="form-token" value="<?php echo e($token); ?>">
+
                                     <div class="row">
                                         <div class="col">
                                             <div class="mb-3">
                                                 <label for="no_rm" class="visually-hidden">No RM</label>
-                                                <input type="text" name="no_rm" class="form-control form-control-lg bg-light border-light text-center" id="no_rm" placeholder="No RM" required>
+                                                <input type="number"
+                                                    name="no_rm"
+                                                    class="form-control form-control-lg bg-light border-light text-center <?php $__errorArgs = ['no_rm'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>"
+                                                    id="no_rm" placeholder="No RM" required value="<?php echo e(old('no_rm')); ?>">
+                                                <?php $__errorArgs = ['no_rm'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                                <span class="invalid-feedback d-block" role="alert">
+                                                    <strong><?php echo e($message); ?></strong>
+                                                </span>
+                                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                                             </div>
-                                        </div><!-- end col -->
-                                    </div><!-- end row -->
+
+                                        </div>
+                                    </div>
 
                                     <div class="mt-3">
                                         <button type="submit" class="btn btn-success w-100">Confirm</button>
                                     </div>
                                 </form>
+
                             </div>
                             <?php else: ?>
                             <div class="p-2 mt-4">
-                                <div class="text-muted text-center mb-4 mx-lg-3">
-                                    <h4 class="">Waduh, terjadi kesalahan</h4>
-                                    <p>Silahkan kembali ke menu berikutnya</p>
+                                <div class="text-center mb-4 mx-lg-3">
+                                    <h4 class="text-danger">Terjadi Kesalahan</h4>
+                                    <p class="text-muted">Data yang Anda minta tidak dapat diproses. Silakan kembali ke menu sebelumnya untuk melanjutkan.</p>
+
+                                    <a href="<?php echo e(url()->previous()); ?>" class="btn btn-outline-primary mt-3">
+                                        <i class="ri-arrow-go-back-line me-1"></i> Kembali
+                                    </a>
                                 </div>
                             </div>
                             <?php endif; ?>
-
-
                         </div>
                         <!-- end card body -->
                     </div>

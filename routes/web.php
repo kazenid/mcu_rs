@@ -23,13 +23,16 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'root'])->name('roo
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/medicalcheckup', [MedicalCheckupController::class, 'index'])->name('medicalcheckup');
+    Route::get('/getkunjungan', [MedicalCheckupController::class, 'getKunjungan'])->name('medicalcheckup.getkunjungan');
+    Route::get('/gettindakan', [MedicalCheckupController::class, 'gettindakan'])->name('medicalcheckup.gettindakan');
 
     //Update User Details
     Route::post('/update-profile/{id}', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('updateProfile');
     Route::post('/update-password/{id}', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('updatePassword');
 
     // Route::get('{any}', [App\Http\Controllers\HomeController::class, 'index'])->name('index');
+
 });
 
 Route::get('/portal/{token}', [App\Http\Controllers\PortalController::class, 'index'])->name('portal');
-Route::get('/portal-submit/{token}', [App\Http\Controllers\PortalController::class, 'submit'])->name('portal.submit');
+Route::post('/portal-submit/{token}', [App\Http\Controllers\PortalController::class, 'submit'])->name('portal.submit');
